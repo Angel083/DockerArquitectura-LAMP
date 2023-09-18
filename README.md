@@ -76,13 +76,16 @@ Al levantar todos los contenedores ya tendrías que poder visualizarlos en docke
     composer update
     ```  
   Si llegas a tener problemas de escritura en alguna carpeta entra nuevamente al contenedor
-    ```Bash
-    docker exec -it webAplication bash
-    ```
+  ```Bash
+  docker exec -it webAplication bash
+  ```
+
   Y luego ejecutar el siguiente comando:
-    ```Bash
-    chmod o+w ./ -R
-    ```
+
+  ``` bash
+  chmod o+w ./ -R
+  ```
+
 No olvides poner tu archivo ***.env*** algunos .gitignore lo eliminan para evitar incompatibilidades entre el equipo de trabajo.
 
 Con todos estos pasos, ¡Ya tendrías que poder visualizar el proyecto!
