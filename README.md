@@ -4,6 +4,13 @@ Ambiente de trabajo que funciona bajo la infrastructura LAMP (Linux, Apache/php,
 
 El proyecto esta preparado para ser usado para el framework de CodeIgniter en su versión 4, sin embargo, comparte arquitectura para Laravel y Symfony (faltan pruebas).
 
+## Uso de las carpetas
+- www
+  Acá dentro irá tu proyecto
+- dump
+  Acá podrás cargar tu script al momento que se **crea o recontruyen** todos los contenedores
+- config
+  Dentro de esta carpeta se encuentra los archivos necesarios para apache, como configuraciones extras, tales como el php.ini.
 ## Tecnologías utilizadas
 - PHP v7.4.33
 - Apache v2.4.57
