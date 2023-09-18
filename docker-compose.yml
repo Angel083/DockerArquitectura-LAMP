@@ -1,0 +1,46 @@
+version: "3.1"
+services:
+  db:
+    image: mariadb
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      # MARIADB_DATABASE: thor
+      MARIADB_USER: developer
+      MARIADB_PASSWORD: developer
+    #volumes:
+      # De acuerdo a la documentación de la imagen de MariaDB, esta línea lee un archivo sql y lo inserta a la DB
+      # - ./dump:/docker-entrypoint-initdb.d
+      # - persistent:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - default
+  www:
+    container_name:
+      "webAplication"
+    build: .
+    ports:
+      - 80:80
+    links:
+      - db
+    volumes:
+      - ./www:/var/www/html
+      - ./config:/usr/local/etc/php
+    networks:
+      - default
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8000:80
+    environment:
+        - MARIADB_ROOT_PASSWORD:root
+        - MARIADB_PASSWORD:root 
+    links: 
+      - db:db
+volumes:
+  # dump:
+  www: {}
+  # persistent:
