@@ -93,3 +93,52 @@ Con todos estos pasos, ¡Ya tendrías que poder visualizar el proyecto!
 Abre la dirección [http://localhost:80/login](http://localhost:80/login) donde estará el proyecto
 
 Ve a [http://localhost:8000](http://localhost:8000) y usa las credenciales usr: root, pwd:root
+
+# Browser-sync
+
+Existe una librería en npm llamada browser-sync (adjunto su sitio web [browser-sync](https://browsersync.io/) y su dirección en [npm](https://www.npmjs.com/package/browser-sync)), que ayuda a recargar en tiempo real los archivos de php, aunque también funcionan para HTML, CSS y JS.
+
+- Navega al directorio raíz de tu proyecto CodeIgniter
+- Crea un archivo de js que servirá de configuración llamado **bs-config.js** y llénalo con la siguiente información:
+
+```jsx
+module.exports = {
+  proxy: "localhost", // Reemplaza con la ruta adecuada a tu proyecto
+  files: [
+    "./**/*.php",
+    "./**/*.css" // Agrega las rutas de tus archivos CSS aquí
+  ],
+  reloadDelay: 10
+};
+```
+
+- Ejecuta el siguiente comando
+
+```bash
+browser-sync start --config bs-config.js
+```
+
+Esto hará que se ejecute el archivo anterior con las configuraciones cargadas, en esta ocasión es:
+
+- proxy: redirección que tendrá el proyecto, por default abre en el puerto 3000
+- files: son los archivos que se leerán y se recargarán en tiempo real
+- reloadDelay: tiempo en milisegundos que tardará en recargar los archivos
+
+## Precauciones
+
+En algunos proyectos como los de Laravel o por algunas incompatibilidades con node, pueden gererar problemas, en caso de encontrar algún error así, solo cambia el código de la siguiente manera.
+
+```jsx
+const bsConfig = {
+  proxy: "localhost", // Reemplaza con la ruta adecuada a tu proyecto
+  files: [
+    reloadDelay: 50"./**/*.php",
+  ],
+  
+};
+
+module.exports = bsConfig;
+```
+
+Y se renombra el archivo como: 
+***bs-config.cjs***
