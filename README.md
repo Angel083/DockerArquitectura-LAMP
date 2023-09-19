@@ -132,9 +132,9 @@ En algunos proyectos como los de Laravel o por algunas incompatibilidades con no
 const bsConfig = {
   proxy: "localhost", // Reemplaza con la ruta adecuada a tu proyecto
   files: [
-    reloadDelay: 50"./**/*.php",
+    "./**/*.php",
   ],
-  
+  reloadDelay: 50
 };
 
 module.exports = bsConfig;
